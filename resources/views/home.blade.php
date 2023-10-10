@@ -5,10 +5,30 @@
 
 
         <div class="col-span-3 h-screen">
-            <div class="h-96 mb-8">
-                <img src="{{ asset('images/profile-bg.jpg') }}" class="w-full h-full rounded-lg">
+            <div class="bg-[url('{{ asset('images/profile-bg.jpg') }}')] w-full h-96 mb-8 rounded-lg p-12 ">
+                <span class="flex justify-end"><i class="text-2xl fa-solid fa-camera"></i></span>
+
+                <section class="flex justify-between w-full mt-20 h-auto">
+                        <div class="flex w-46 h-46">
+                            <div class="relative">
+                                <img src="{{ asset('images/profile.png') }}" class="">
+                                <span class="absolute bottom-5 left-36 text-3xl text-white"><i class="fa-solid fa-camera"></i></span>
+                            </div>
+
+
+                            <div class="flex flex-col justify-center gap-0 w-46 h-46 ml-8">
+                                <h1>Username</h1>
+                                <h6>@tagname</h6>
+                                <h3>UI/UX Designer for web and mobile</h3>
+                                <span>19 Following</span>
+                            </div>
+                        </div>
+
+                        <button class="w-40 mt-36 bg-white text-amber-500 p-4 rounded-full">Edit Profile</button>
+
+                </section>
             </div>
- 
+
             <div class="grid grid-cols-3 gap-4 h-auto">
 
                 <div class="flex flex-col h-auto gap-12">
@@ -95,6 +115,14 @@
                 </div>
 
                 <div class="col-span-2 h-96 bg-purple-200">
+
+                    <nav class="flex justify-center bg-red-400 p-4 text-xl">
+                        <ul class="flex space-x-64">
+                            <li>Posts</li>
+                            <li>Pages</li>
+                            <li>Groups</li>
+                        </ul>
+                    </nav>
 
                 </div>
 

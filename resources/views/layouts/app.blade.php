@@ -93,3 +93,5 @@
 REFERENCE:
 
 https://www.behance.net/gallery/93022203/Social-media-UIUX-design-Ajwbetcom-website --}}
+
+{{-- https://tailwindcss.com/docs/pointer-events#controlling-pointer-event-behavior --}}
