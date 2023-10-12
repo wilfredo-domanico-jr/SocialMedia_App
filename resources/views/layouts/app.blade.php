@@ -8,6 +8,27 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <style>
+            /* width */
+            ::-webkit-scrollbar {
+            width: 5px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: light-gray;
+            border-radius: 10px;
+            }
+        </style>
+
         <script>
             tailwind.config = {
               theme: {
@@ -20,38 +41,21 @@
             }
           </script>
     </head>
-    <body class="bg-slate-100">
-        <nav class="p-6 bg-amber-500 flex justify-between mb-6">
+    <body class="flex flex-col relative bg-slate-100">
+        <nav class="fixed p-1 bg-amber-500 flex justify-between items-center z-50 w-full">
 
-            <span><img src="{{ asset('images/logo.svg') }}" class="w-28"></span>
-
-            {{-- <ul class="flex items-center text-white">
-                <li>
-                    <a href="/" class="p-3">Home</a>
-                </li>
-                <li>
-                    <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
-                </li>
-                <li>
-                    <a href="{{ route('posts') }}" class="p-3">Posts</a>
-                </li>
-            </ul> --}}
-            <form class="flex w-1/3 text-gray-400">
-            <input type="search" class="w-full p-4 rounded-full" placeholder="Search">
-            {{-- <button type="submit" style=""><i class="fa-solid fa-magnifying-glass"></i></button> --}}
+            <span class="w-1/4"><img src="images/logo.svg" class="w-28"></span>
+            <form class="flex w-1/2 h-10 relative">
+                <i class="absolute top-1/2 left-6 transform -translate-x-1/2 -translate-y-1/2 fa-solid fa-magnifying-glass"></i>
+                <input type="search" class="pl-12 pr-4 text-gray-500 h-auto w-full rounded-full" placeholder="Search">
             </form>
-            <ul class="flex items-center text-white text-3xl w-96 justify-evenly">
-                @auth
+
+            <ul class="flex items-center text-white md:text-lg lg:text-xl w-1/4 justify-evenly">
+
                     <li>
                         <a href="/" class="p-3"><i class="fa-solid fa-house"></i></a>
-                        {{-- <a href="" class="p-3">{{ auth()->user()->name }}</a> --}}
+
                     </li>
-                    {{-- <li>
-                        <form action="{{ route('logout') }}" method="post" class="p-3 inline">
-                            @csrf
-                            <button type="submit">Logout</button>
-                        </form>
-                    </li> --}}
 
                     <li>
                         <a href="/" class="p-3"><i class="fa-solid fa-bell"></i></a>
@@ -62,27 +66,12 @@
                     </li>
 
                     <li>
-                        <img src="{{ asset('images/profile.png') }}" class="w-14">
+                        <img src="images/profile.png" class="cursor-pointer lg:w-10 lg:h-10">
                     </li>
 
-                    {{-- <li>
-                        <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('posts') }}" class="p-3">Posts</a>
-                    </li> --}}
-                @endauth
-
-                @guest
-                    <li>
-                        <a href="{{ route('login') }}" class="p-3">Login</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('register') }}" class="p-3">Register</a>
-                    </li>
-                @endguest
             </ul>
         </nav>
+        {{-- <br><br><br> --}}
         @yield('content')
 
 
