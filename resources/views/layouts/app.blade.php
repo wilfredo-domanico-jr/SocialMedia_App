@@ -13,7 +13,7 @@
         <style>
             /* width */
             ::-webkit-scrollbar {
-            width: 5px;
+            width: 15px;
             }
 
             /* Track */
@@ -23,10 +23,10 @@
             }
 
             /* Handle */
-            ::-webkit-scrollbar-thumb {
-            background: light-gray;
+            /* ::-webkit-scrollbar-thumb {
+            background: red;
             border-radius: 10px;
-            }
+            } */
         </style>
 
         <script>
@@ -66,7 +66,13 @@
                     </li>
 
                     <li>
-                        <img src="images/profile.png" class="cursor-pointer lg:w-10 lg:h-10">
+                        <form action="{{ route('logout') }}" method="post" class="p-3 inline">
+                            @csrf
+                            <button type="submit">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </button>
+                        </form>
+                        {{-- <img src="images/profile.png" class="cursor-pointer lg:w-10 lg:h-10"> --}}
                     </li>
 
             </ul>

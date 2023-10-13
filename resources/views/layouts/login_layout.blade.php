@@ -21,7 +21,7 @@
             }
           </script>
     </head>
-    <body class="flex flex-col relative bg-slate-100">
+    <body class="bg-slate-100 h-full mx-20">
 
         @yield('content')
 

@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.login_layout')
+
 
 @section('content')
     <div class="flex justify-center">
