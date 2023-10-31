@@ -22,16 +22,16 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
+            dd('asdsa');
             return back()->with('status', 'Invalid login details');
         }
 
-        return view('home');
+        return redirect()->route('home');
     }
 }
