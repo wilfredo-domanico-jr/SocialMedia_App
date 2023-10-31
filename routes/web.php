@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostLikeController;
 // use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-
+use App\Http\Controllers\Auth\ProviderController;
 
 // Route::get('/', function () {
 //     return view('auth.login');
@@ -33,4 +33,10 @@ Route::controller(LoginController::class)->name('login')->group(function(){
 Route::post('/editProfile', [ProfileController::class, 'store'])->name('editProfile');
 
 
+
+//SOCIALITE
+
+
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 

@@ -25,6 +25,9 @@ class User extends Authenticatable
         'title',
         'profile_pic',
         'profile_bg',
+        'provider',
+        'provider_id',
+        'provider_token',
     ];
 
     /**

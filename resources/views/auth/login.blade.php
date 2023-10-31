@@ -27,26 +27,29 @@
                 <p class="mb-0 mr-4 text-lg">Sign in with</p>
                     <div class="flex justify-between">
                         <!-- Facebook -->
-                        <button
-                            type="button"
-                            class="mx-1 h-9 w-9 rounded-full bg-blue-600 text-white hover:border-gray-300 hover:border-2">
-                            <!-- Facebook -->
+                        <a href="/auth/facebook/redirect"
+                            class="flex items-center justify-center mx-1 h-9 w-9 rounded-full bg-blue-600 text-white hover:border-gray-300 hover:border-2">
+
                             <i class="fa-brands fa-facebook"></i>
-                        </button>
+                        </a>
                         <!-- Twitter -->
-                        <button
-                            type="button"
-                            class="mx-1 h-9 w-9 rounded-full bg-blue-400 text-white hover:border-gray-300 hover:border-2">
-                            <!-- Facebook -->
+                        <a href="/auth/twitter/redirect"
+                            class="flex items-center justify-center mx-1 h-9 w-9 rounded-full bg-blue-400 text-white hover:border-gray-300 hover:border-2">
+
                             <i class="fa-brands fa-twitter"></i>
-                        </button>
+                        </a>
                         <!-- Linkedin -->
-                        <button
-                            type="button"
-                            class="mx-1 h-9 w-9 rounded-full bg-blue-500 text-white hover:border-gray-300 hover:border-2">
-                            <!-- Facebook -->
+                        <a href="/auth/linkedin/redirect"
+                            class="flex items-center justify-center mx-1 h-9 w-9 rounded-full bg-blue-500 text-white hover:border-gray-300 hover:border-2">
+
                             <i class="fa-brands fa-linkedin"></i>
-                        </button>
+                        </a>
+
+                        <!-- Google -->
+                        <a href="/auth/google/redirect"
+                            class="flex items-center justify-center mx-1 h-9 w-9 rounded-full bg-blue-500 text-white hover:border-gray-300 hover:border-2">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
                     </div>
             </div>
 

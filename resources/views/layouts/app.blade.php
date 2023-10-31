@@ -85,14 +85,25 @@
                 </li>
 
                 <li>
-                    @if(getCurrentUserProfile())
 
-                    <img src="{{ asset('images/profiles/' . getCurrentUserProfile()) }}" alt ="Profile Picture" class="w-14 h-14 rounded-full">
+                    @if(auth()->user()->profile_pic)
 
-                    @else
-                    <img src="{{ asset('images/profile.png') }}" alt ="Profile Picture" class="w-14 h-14 rounded-full">
+                        <a href=""><img src="{{ getCurrentUserProfile()}}"
+                            alt ="Profile Picture" class="w-14 h-14 rounded-full"></a>
 
-                    @endif
+
+                        @else
+                                    @if(getCurrentUserProfile())
+
+                                    <a href=""><img src="{{ asset('images/profiles/' . getCurrentUserProfile()) }}"
+                                        alt ="Profile Picture" class="w-14 h-14 rounded-full"></a>
+
+                                    @else
+                                    <a href=""><img src="{{ asset('images/profile.png') }}"
+                                        alt ="Profile Picture" class="w-14 h-14 rounded-full"></a>
+
+                                    @endif
+                        @endif
 
                 </li>
             </ul>

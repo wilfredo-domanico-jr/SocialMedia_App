@@ -6,6 +6,7 @@ use App\Notifications\AssetMovementNotification;
 
 
 function getCurrentUserProfile(){
+    
     $userProfile = auth()->user()->profile_pic;
 
 

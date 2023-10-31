@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -22,29 +23,17 @@ class ProfileController extends Controller
 
             $destinationPath = public_path().'/images/profiles/' ;
 
+            $fullDirectory = $destinationPath.$fileName;
 
             $file->move($destinationPath, $fileName);
 
-            $trimedLogo = preg_replace('/\s+/', ' ', $fileName);
+            User::where('id', auth()->user()->id)->update([
+                'profile_pic' => $fullDirectory
+            ]);
 
-            dd($trimedLogo);
-
-            // $isTrue = GLOBALS::where('FIELD','LOGO')->first();
             // $trimedLogo = preg_replace('/\s+/', ' ', $fileName);
 
-            // if($isTrue){
-            //     GLOBALS::where('FIELD','LOGO')
-            //             ->update(['VALUE' => $trimedLogo]);
-            // }else{
-            //     GLOBALS::create([
-            //         'FIELD' => 'LOGO',
-            //         'VALUE' => $trimedLogo
-            //     ]);
-            // }
-
-            // return redirect()
-            //       ->route('accountSettings.index')
-            //       ->with('success','logo updated');
+            return redirect()->route('home');
         }
 
         return back()->with('error','error upload a data first');

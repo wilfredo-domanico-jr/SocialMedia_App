@@ -27,17 +27,24 @@
                         <div
                             class="flex justify-center items-center w-44 h-44 border-4 border-amber-600 rounded-full">
 
+                        @if(auth()->user()->profile_pic)
 
-                            @if(getCurrentUserProfile())
+                        <a href=""><img src="{{ getCurrentUserProfile()}}"
+                            class="cursor-pointer top-0 left-0 w-40 h-40 rounded-full"></a>
 
-                            <a href=""><img src="{{ asset('images/profiles/' . getCurrentUserProfile()) }}"
-                                class="cursor-pointer top-0 left-0 w-40 h-40 rounded-full"></a>
+                        @else
+                                    @if(getCurrentUserProfile())
 
-                            @else
-                            <a href=""><img src="{{ asset('images/profile.png') }}"
-                                class="cursor-pointer top-0 left-0 w-40 h-40 rounded-full"></a>
+                                    <a href=""><img src="{{ asset('images/profiles/' . getCurrentUserProfile()) }}"
+                                        class="cursor-pointer top-0 left-0 w-40 h-40 rounded-full"></a>
 
-                            @endif
+                                    @else
+                                    <a href=""><img src="{{ asset('images/profile.png') }}"
+                                        class="cursor-pointer top-0 left-0 w-40 h-40 rounded-full"></a>
+
+                                    @endif
+                        @endif
+
 
 
 
@@ -50,9 +57,11 @@
                     </div>
 
                     <div class="flex flex-col justify-center gap-0 w-46 h-46 ml-8">
-                        <h1>{{auth()->user()->first_name}} {{auth()->user()->last_name}} </h1>
-                        <h6>{{auth()->user()->username}}</h6>
-                        <h3>UI/UX Designer for web and mobile</h3>
+                        <h1>{{auth()->user()->name}}</h1>
+                        @isset(auth()->user()->username)
+                            <h6>{{auth()->user()->username}}</h6>
+                        @endisset
+                        {{-- <h3>UI/UX Designer for web and mobile</h3> --}}
                         <span>19 Following</span>
                     </div>
                 </div>
@@ -152,14 +161,23 @@
                                 <div class="h-34 bg-white p-4 rounded-lg">
                                     <div class="flex gap-2 items-center ml-6">
 
-                                        @if(getCurrentUserProfile())
+                                       @if(auth()->user()->provider)
+                                            <a href=""><img src="{{getCurrentUserProfile()}}" class="rounded-full h-16 w-16"></a>
 
-                                        <a href=""><img src="{{ asset('images/profiles/' . getCurrentUserProfile()) }}" class="rounded-full h-16 w-16"></a>
 
-                                        @else
-                                        <a href=""><img src="{{ asset('images/profile.png') }}" class="rounded-full h-16 w-16"></a>
+                                       @else
 
-                                        @endif
+                                                @if(getCurrentUserProfile())
+
+                                                <a href=""><img src="{{ asset('images/profiles/' . getCurrentUserProfile()) }}" class="rounded-full h-16 w-16"></a>
+
+                                                @else
+                                                <a href=""><img src="{{ asset('images/profile.png') }}" class="rounded-full h-16 w-16"></a>
+
+                                                @endif
+
+                                       @endif
+
 
                                             <textarea class="w-full min-h-24 max-h-auto resize-none px-2 py-8 z-10 focus:border-black" name="body"
                                                 id="" placeholder="Create Post..."></textarea>
@@ -193,17 +211,37 @@
                                 </div>
                             </section> --}}
                         </div>
+
+
                         @foreach ($latestPost as $post)
                             <div class="rounded-lg bg-white min-h-96 max-h-auto shadow-xl">
 
                                 <div class="flex justify-between px-8 py-4">
                                     <div class="flex items-center">
 
-                                        <a href="#" class="h-16 w-16 "><img src="images/profile.png" alt="Profile"
-                                                class="rounded-full"></a>
+                                        @if($post->provider)
+                                        <a href=""><img src="{{$post->profile_pic}}" class="rounded-full h-16 w-16"></a>
+
+
+                                        @else
+
+                                                    @if($post->profile_pic)
+
+                                                    <a href=""><img src="{{ asset('images/profiles/' . $post->profile_pic) }}" class="rounded-full h-16 w-16"></a>
+
+                                                    @else
+
+                                                        <a href="#" class="h-16 w-16 "><img src="images/profile.png" alt="Profile"
+                                                            class="rounded-full"></a>
+                                                    @endif
+
+                                        @endif
+
+
+
 
                                         <div class="min-w-auto h-auto p-4 text-gray-500">
-                                            <h2 class="text-xl">{{$post->first_name}} {{$post->last_name}}</h2>
+                                            <h2 class="text-xl">{{$post->name}}</h2>
                                             <h6 class="text-md">{{$post->username}} • {{ $post->created_at->setTime(0, 0, 0)->diffForHumans() }}</h6>
                                         </div>
                                     </div>
